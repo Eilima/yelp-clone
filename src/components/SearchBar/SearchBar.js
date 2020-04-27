@@ -1,8 +1,7 @@
 import React from "react";
 import "./SearchBar.css";
-// import { render } from "@testing-library/react";
 
-class SearchBar extends React.Component {
+export class SearchBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -46,5 +45,3 @@ class SearchBar extends React.Component {
     );
   }
 }
-
-export default SearchBar;
