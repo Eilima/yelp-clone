@@ -2,7 +2,7 @@ import React from "react";
 import "./BusinessList.css";
 import Business from "../Business/Business";
 // Is passed down the 'Businesses' array which contains objects
-class BusinessList extends React.Component {
+export class BusinessList extends React.Component {
   // Will render the a instance of the 'Business' component for each element of the array
   render() {
     return (
@@ -15,5 +15,3 @@ class BusinessList extends React.Component {
     );
   }
 }
-
-export default BusinessList;
