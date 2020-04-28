@@ -15,6 +15,7 @@ export class SearchBar extends React.Component {
       "Most Reviewed": "review_count",
     };
   }
+
   getSortByClass() {
     if (this.state.sortBy === this.sortByOptions.sortBy) return "active";
     else return "";
@@ -23,6 +24,7 @@ export class SearchBar extends React.Component {
     this.setState({ sortBy: sortByOption });
   }
   renderSortByOptions() {
+    //obtain the object key values of the following
     return Object.keys(this.sortByOptions).map((sortByOption) => {
       let sortByOptionValue = this.sortByOptions[sortByOption];
       return <li key="sortByOptionValue">{sortByOption}</li>;
