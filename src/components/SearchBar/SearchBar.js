@@ -37,6 +37,7 @@ export class SearchBar extends React.Component {
           <ul>{this.renderSortByOptions}</ul>
         </div>
         <div className="SearchBar-fields">
+          {/* Creates input fields to search for businesses and a location */}
           <input placeholder="Search Businesses" />
           <input placeholder="Where?" />
         </div>
