@@ -2,28 +2,27 @@ import React from "react";
 import "./SearchBar.css";
 
 class SearchBar extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      term: "",
-      location: "",
-      sortBy: "best_match",
-    };
-    this.sortByOptions = {
-      "Best Match": "best_match",
-      "Highest Rated": "rating",
-      "Most Reviewed": "review_count",
-    };
-  }
+  sortByOptions = {
+    "Best Match": "best_match",
+    "Highest Rated": "rating",
+    "Most Reviewed": "review_count",
+  };
+  state = {
+    term: "",
+    location: "",
+    sortBy: "best_match",
+  };
 
   getSortByClass = (sortByOption) => {
-    if (this.state.sortBy === sortByOption) return "active";
-    else return "";
+    if (this.state.sortBy === sortByOption) {
+      return "active";
+    }
+    return "";
   };
 
   handleSortByChange = (sortByOption) => {
     this.setState({
-      sortBy: sortByOption,
+      sortBy: this.sortByOption,
     });
   };
 
@@ -38,28 +37,31 @@ class SearchBar extends React.Component {
       location: event.target.value,
     });
   };
+
+  handleSearch = (e) => {
+    // Calling search function in Yelp with parameters
+    this.props.searchYelp(
+      this.state.term,
+      this.state.location,
+      this.state.sortBy
+    );
+    e.preventDefault();
+  };
+
   renderSortByOptions() {
     return Object.keys(this.sortByOptions).map((sortByOption) => {
       let sortByOptionValue = this.sortByOptions[sortByOption];
       return (
         <li
-          onClick={this.handleSortByChange.bind(this, sortByOptionValue)}
           className={this.getSortByClass(sortByOptionValue)}
           key={sortByOptionValue}
+          onClick={this.handleSortByChange.bind(this, sortByOptionValue)}
         >
           {sortByOption}
         </li>
       );
     });
   }
-  handleSearch = (event) => {
-    this.props.searchYelp(
-      this.state.term,
-      this.state.location,
-      this.state.sortBy
-    );
-    event.preventDefault();
-  };
 
   render() {
     return (
@@ -69,10 +71,10 @@ class SearchBar extends React.Component {
         </div>
         <div className="SearchBar-fields">
           <input
-            onChange={this.handleTermChange}
             placeholder="Search Businesses"
+            onChange={this.handleTermChange}
           />
-          <input onChange={this.handleLocationChange} placeholder="Where?" />
+          <input placeholder="Where?" onChange={this.handleLocationChange} />
         </div>
         <div className="SearchBar-submit">
           <a onClick={this.handleSearch}>Let's Go</a>
