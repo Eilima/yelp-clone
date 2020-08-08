@@ -1,3 +1,3 @@
-## ravenous
+## yelp-clone
 
-A client-side React application, utilizing the Yelp API to search for local businesses.
+A web-application, utilizing the Yelp API to search for local businesses.
